@@ -1,8 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
-import Switch from 'react-switch';
-import DatePicker from 'react-datepicker';
+import { useState } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
-
+import { Mes } from './components/Mes';
 
 const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
@@ -89,105 +87,12 @@ const pagosConst = [
     }
 ];
 
-const calculateDateDifference = (startDate) => {
-    const now = new Date();
-    const start = new Date(startDate);
-    const diffTime = start - now; // removed Math.abs
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    return diffDays;
-};
-
-const Pago = ({ pago }) => {
-    const [checked, setChecked] = useState(false);
-    const [startDate, setStartDate] = useState(null);
-    const [openDatePicker, setOpenDatePicker] = useState(false);
-    const wrapperRef = useRef(null);
-
-    const handleChange = (checked) => {
-        setChecked(checked);
-        if (checked) {
-            setStartDate(null);
-        }
-    };
-
-    const handleDateChange = (date) => {
-        setStartDate(date);
-        setOpenDatePicker(false);
-    };
-
-    const dateDifference = calculateDateDifference(startDate);
-
-    let itemStyle = {};
-    if (checked) {
-        itemStyle.backgroundColor = 'green';
-    } else if (!startDate || dateDifference > 3) {
-        itemStyle.backgroundColor = 'gray';
-    } else if (dateDifference <= 0) {
-        itemStyle.backgroundColor = 'red';
-    } else if (dateDifference <= 3) {
-        itemStyle.backgroundColor = 'orange';
-    }
-
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-                setOpenDatePicker(false);
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [wrapperRef]);
-
-    return (
-        <li style={itemStyle}>
-            {pago.nombre}
-            <div className="switch-wrapper">
-                <Switch onChange={handleChange} checked={checked} />
-            </div>
-            <div style={{position: 'relative'}}>
-                <button onClick={() => setOpenDatePicker(!openDatePicker)}>🖉</button>
-                {openDatePicker && (
-                    <div ref={wrapperRef} style={{position: 'absolute'}}>
-                        <DatePicker 
-                            selected={startDate} 
-                            onChange={handleDateChange} 
-                            open={openDatePicker}
-                            onCalendarClose={() => setOpenDatePicker(false)}
-                            onCalendarOpen={() => setOpenDatePicker(true)}
-                            customInput={<div />} 
-                        />
-                    </div>
-                )}
-            </div>
-            {!checked && startDate && <span>{startDate.toLocaleDateString()}</span>}
-        </li>
-    );
-};
-
-const Mes = ({ mes, pagos }) => {
-    return (
-        <div className='mes'>
-            <h2>{mes}</h2>
-            <ul>
-                {pagos.map((pago, index) => (
-                    (pago.mensual || pago.meses?.includes(mes)) && (
-                        <Pago key={index} pago={pago} />
-                    )
-                ))}
-            </ul>
-        </div>
-    );
-};
-
 const App = () => {
-    const [indiceInicio, setIndiceInicio] = useState(new Date().getMonth());
+    const [indiceInicio, setIndiceInicio] = useState(new Date().getMonth() - 1 < 0 ? 0 : new Date().getMonth() - 1);
 
     const mostrarMeses = () => {
-        return meses.slice(indiceInicio, indiceInicio + 3).map((mes, index) => (
-            <Mes key={index} mes={mes} pagos={pagosConst} />
+        return meses.slice(indiceInicio, indiceInicio + 3).map((mes) => (
+            <Mes key={mes} mes={mes} pagos={pagosConst} />
         ));
     };
 
@@ -203,16 +108,26 @@ const App = () => {
         }
     };
 
+    const handleResetClick = () => {
+        localStorage.clear();
+        window.location.reload();
+    };
+
     return (
         <main>
             <h1>PAGOS PENDIENTES
                 <br />💸💸💸💸<br />
             </h1>
-            <button onClick={handlePreviousClick}>Anterior</button>
-            <button onClick={handleNextClick}>Siguiente</button>
+            <div className="buttonContainer">
+                <button className="myButton" onClick={handlePreviousClick}>Anterior</button>
+                <button className="myButton" onClick={handleNextClick}>Siguiente</button>
+            </div>
             <section className='mesesYPagos'>
                 {mostrarMeses()}
             </section>
+            <div className="buttonContainer">
+                <button className="myButton-reset" onClick={handleResetClick}>Reset</button>
+            </div>
         </main>
     );
 };

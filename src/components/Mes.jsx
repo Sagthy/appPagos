@@ -1,18 +1,17 @@
-import Pago from './Pago';
+import { Pago } from './Pago';
 
-export const Mes = ({ mes, pagos }) => {
+export function Mes ({ mes, pagos }) {
     return (
         <div className='mes'>
             <h2>{mes}</h2>
             <ul>
-                {pagos.map((pago, index) => (
+                {pagos.map((pago) => (
                     (pago.mensual || pago.meses?.includes(mes)) && (
-                        <Pago key={index} pago={pago} />
+                        <Pago key={pago.nombre} pago={pago} mes={mes} />
                     )
                 ))}
             </ul>
         </div>
     );
-};
+}
 
-export default Mes;

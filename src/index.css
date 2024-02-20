@@ -1,39 +1,41 @@
+/* Usamos una fuente system ui */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #FFFFFF;
+  font-weight: bold;
+  font-family: 'system-ui', sans-serif;
+  background-color: #181818;
+  color: #FAFAFA;
   margin: 0;
   padding: 0;
 }
 
 main {
-  width: 80%;
   margin: 0 auto;
   padding: 20px;
 }
 
 h1 {
   text-align: center;
-  color: #FFFFFF;
+  color: #FAFAFA;
 }
 
 .mesesYPagos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .mes {
   flex: 0 0 30%;
-  background-color: #1E1E1E;
-  margin-bottom: 20px;
+  background-color: #282828;
+  margin: 1%;
   padding: 20px;
-  box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.1);
+  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
 }
 
 .mes h2 {
   margin-top: 0;
-  color: #FFFFFF;
+  color: #FAFAFA;
 }
 
 .mes ul {
@@ -42,24 +44,27 @@ h1 {
 }
 
 
-.mes ul li:last-child {
-  margin-bottom: 0;
-}
-
 .mes ul li {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
-  color: #FFFFFF;
-  display: flex; /* Hace que el contenido de li sea un contenedor flex */
-  align-items: center; /* Centra los elementos verticalmente */
+  color: #FAFAFA;
+  display: flex;
+  align-items: center;
 }
 
-.mes ul li span {
-  margin-right: auto; /* Empuja los elementos restantes hacia la derecha */
+li span {
+  display: flex;
+  align-items: center;
 }
 
-.mes ul li button, .mes ul li .switch-wrapper {
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.mes ul li button,
+.mes ul li .switch-wrapper {
   margin-left: 10px;
 }
 
@@ -67,10 +72,68 @@ button {
   background: none;
   border: none;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #FAFAFA;
 }
 
 button:focus {
-  outline: 2px solid #FFFFFF; /* Añade un contorno visible al foco para mejorar la accesibilidad */
+  outline: 2px solid #FAFAFA;
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.myButton {
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 25px;
+  width: 100px;
+}
+
+.myButton-reset {
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 12px;
+}
+
+.myButton-reset:hover {
+  box-shadow: 0 0 5px #ff0000, 0 0 7px #ff1a1a, 0 0 9px #ff3333, 0 0 11px #ff4d4d;
+}
+
+.myButton:hover {
+  background-color: #327036;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #FAFAFA;
+  display: flex;
+  /* Añade esta línea */
+  align-items: center;
+  /* Añade esta línea */
+  justify-content: center;
+  /* Añade esta línea */
+}

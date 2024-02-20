@@ -1,14 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import { calculateDateDifference } from '../utils/dateUtils';
+import Switch from 'react-switch';
+import DatePicker from 'react-datepicker';
 
-export const Pago = ({ pago }) => {
-    const [checked, setChecked] = useState(false);
-    const [startDate, setStartDate] = useState(null);
+export function Pago ({ pago, mes }) {
+    const [checked, setChecked] = useState(localStorage.getItem(`checked-${mes}-${pago.nombre}`) === 'true');
+    const [startDate, setStartDate] = useState(localStorage.getItem(`startDate-${mes}-${pago.nombre}`) ? new Date(localStorage.getItem(`startDate-${mes}-${pago.nombre}`)) : null);
     const [openDatePicker, setOpenDatePicker] = useState(false);
     const wrapperRef = useRef(null);
 
     const handleChange = (checked) => {
         setChecked(checked);
+        localStorage.setItem(`checked-${mes}-${pago.nombre}`, checked);
         if (checked) {
             setStartDate(null);
         }
@@ -16,6 +19,7 @@ export const Pago = ({ pago }) => {
 
     const handleDateChange = (date) => {
         setStartDate(date);
+        localStorage.setItem(`startDate-${mes}-${pago.nombre}`, date.toISOString());
         setOpenDatePicker(false);
     };
 
@@ -47,26 +51,29 @@ export const Pago = ({ pago }) => {
 
     return (
         <li style={itemStyle}>
-            {pago.nombre}
-            <div className="switch-wrapper">
-                <Switch onChange={handleChange} checked={checked} />
-            </div>
-            <div style={{position: 'relative'}}> {/* Contenedor agregado */}
-                <button onClick={() => setOpenDatePicker(!openDatePicker)}>🖉</button>
-                {openDatePicker && (
-                    <div ref={wrapperRef} style={{position: 'absolute'}}> {/* Posición absoluta agregada */}
-                        <DatePicker 
-                            selected={startDate} 
-                            onChange={handleDateChange} 
-                            open={openDatePicker}
-                            onCalendarClose={() => setOpenDatePicker(false)}
-                            onCalendarOpen={() => setOpenDatePicker(true)}
-                            customInput={<div />} // Aquí está el cambio
-                        />
-                    </div>
-                )}
-            </div>
+            <span>
+                {pago.nombre}
+                <div className="switch-wrapper">
+                    <Switch onChange={handleChange} checked={checked} />
+                </div>
+                <div style={{ position: 'relative' }}>
+                    <button onClick={() => setOpenDatePicker(!openDatePicker)}>🖉</button>
+                    {openDatePicker && (
+                        <div ref={wrapperRef} style={{ position: 'absolute' }}>
+                            <DatePicker
+                                selected={startDate}
+                                onChange={handleDateChange}
+                                open={openDatePicker}
+                                onCalendarClose={() => setOpenDatePicker(false)}
+                                onCalendarOpen={() => setOpenDatePicker(true)}
+                                customInput={<div />}
+                            />
+                        </div>
+                    )}
+                </div>
+
+            </span>
             {!checked && startDate && <span>{startDate.toLocaleDateString()}</span>}
         </li>
     );
-};
+}

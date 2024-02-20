@@ -1,30 +1,33 @@
-# Aplicación de Gestión de Pagos
+# Pagos Pendientes
 
-Esta aplicación permite a los usuarios gestionar sus pagos mensuales y anuales. Los pagos se pueden marcar como realizados y se pueden establecer fechas de vencimiento para cada uno de ellos.
+Esta es una aplicación de React que ayuda a los usuarios a gestionar sus pagos pendientes.
 
-## Características
+## Descripción
 
-- Los pagos se pueden marcar como realizados. Los pagos realizados se muestran en verde, mientras que los pagos pendientes se muestran en rojo.
-- Los pagos se pueden ordenar alfabéticamente.
+La aplicación muestra una lista de pagos pendientes que pueden ser mensuales o en meses específicos. Los pagos se pueden marcar como pagados y se puede establecer una fecha de vencimiento para cada uno.
+
+## Funcionalidades
+
+- Los pagos se pueden marcar como pagados.
+- Se puede establecer una fecha de vencimiento para cada pago.
 - Los pagos se pueden filtrar por mes.
-- Los usuarios pueden navegar entre los meses utilizando los botones "Siguiente" y "Anterior".
-- Los usuarios pueden establecer una fecha de vencimiento para cada pago. Si un pago está a tres días o menos de su fecha de vencimiento y aún no se ha realizado, parpadeará para alertar al usuario.
-- Los usuarios pueden restablecer todos los pagos y fechas de vencimiento utilizando el botón "Restablecer".
-- Todos los pagos y fechas de vencimiento se guardan en el almacenamiento local del navegador, por lo que se mantienen entre las sesiones de navegación.
-- Todos los pagos y fechas de vencimiento se restablecen automáticamente el 1 de enero de cada año.
+- Los pagos se almacenan en el almacenamiento local del navegador para persistir entre las sesiones.
 
-## Cómo usar
+## Instalación
 
-1. Marque un pago como realizado haciendo clic en el checkbox correspondiente.
-2. Establezca una fecha de vencimiento para un pago haciendo clic en el botón de edición (el icono del lápiz) y seleccionando una fecha en el calendario emergente.
-3. Navegue entre los meses utilizando los botones "Siguiente" y "Anterior".
-4. Restablezca todos los pagos y fechas de vencimiento haciendo clic en el botón "Restablecer".
+Para instalar y ejecutar esta aplicación, necesitarás tener Node.js y npm instalados en tu computadora. Luego puedes seguir estos pasos:
 
-## Tecnologías utilizadas
+1. Clona el repositorio: `git clone https://github.com/Sagthy/appPagos.git`
+2. Navega al directorio del proyecto: `cd appPagos`
+3. Instala las dependencias: `npm install`
+4. Inicia la aplicación: `npm start`
 
-- React
-- JavaScript
-- HTML
-- CSS
-- jQuery
-- jQuery UI (para el calendario emergente)
+## Uso
+
+Al iniciar la aplicación, verás una lista de pagos pendientes. Puedes marcar un pago como pagado haciendo clic en el interruptor junto a él. También puedes establecer una fecha de vencimiento para cada pago haciendo clic en el botón de calendario.
+
+Puedes navegar entre los meses usando los botones "Anterior" y "Siguiente".
+
+## Contribución
+
+Las contribuciones son bienvenidas. Por favor, abre un problema o realiza un pull request para sugerir cambios o mejoras.

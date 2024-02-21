@@ -13,6 +13,7 @@ export function usePago (pago, mes) {
     localStorage.setItem(`checked-${mes}-${pago.nombre}`, checked)
     if (checked) {
       setStartDate(null)
+      localStorage.removeItem(`startDate-${mes}-${pago.nombre}`) // Añade esta línea
     }
   }
 

@@ -99,6 +99,7 @@ li span {
 .myButton {
   font-weight: bold;
   margin: 10px;
+  margin-bottom: 10px;
   padding: 10px;
   background-color: #2d2d2d;
   color: white;
@@ -171,4 +172,12 @@ button {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker {
+  width: 100%; /* Asegúrate de que el DatePicker tenga suficiente ancho */
 }

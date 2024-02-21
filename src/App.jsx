@@ -130,6 +130,8 @@ const App = () => {
       <div className='buttonContainer'>
         <button className='myButton-reset' onClick={handleResetClick}>Reset</button>
       </div>
+      <div className='absolute' />
+
     </main>
   )
 }

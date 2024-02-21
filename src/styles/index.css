@@ -1,4 +1,6 @@
-/* importo una fuente system ui */
+/* importo una fuente paytone */
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
 body {
   font-weight: bold;
   font-family: 'system-ui', sans-serif;
@@ -6,6 +8,18 @@ body {
   color: #FAFAFA;
   margin: 0;
   padding: 0;
+}
+
+.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -2;
+  height: 100%; /* changed from auto */
+  width: 100%; /* changed from auto */
+  background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(105, 105, 105, 0.3), rgba(255,255,255,0));
+  background-color: #181818;
 }
 
 main {
@@ -16,5 +30,7 @@ main {
 h1 {
   text-align: center;
   color: #FAFAFA;
+  font-family: paytone one;
+  letter-spacing: 2px;
+  font-size: 40px;
 }
-

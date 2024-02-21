@@ -26,7 +26,7 @@ export function Pago({ pago, mes }) {
                 {pago.nombre}
                 {!isPastDue && <SwitchElement checked={checked} handleChange={handleChange} />}
                 <div style={{ position: 'relative' }}>
-                    <button onClick={() => setOpenDatePicker(!openDatePicker)}>
+                    <button onClick={() => setOpenDatePicker(!openDatePicker)} aria-label="Open Date Picker">
                         <FontAwesomeIcon icon={faPencilAlt} />
                     </button>
                     {openDatePicker && <DatePickerElement startDate={startDate} handleDateChange={handleDateChange} openDatePicker={openDatePicker} setOpenDatePicker={setOpenDatePicker} wrapperRef={wrapperRef} />}

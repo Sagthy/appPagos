@@ -4,13 +4,13 @@
 }
 
 .item-gray {
-    background-color: gray;
+    background-color: rgb(46, 46, 46);
 }
 
 .item-red {
-    background-color: red;
+    background-color: rgb(224, 0, 0);
 }
 
 .item-orange {
-    background-color: orange;
+    background-color:#ff7300;
 }

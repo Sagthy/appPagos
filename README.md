@@ -20,7 +20,7 @@ Para instalar y ejecutar esta aplicación, necesitarás tener Node.js y npm inst
 1. Clona el repositorio: `git clone https://github.com/Sagthy/appPagos.git`
 2. Navega al directorio del proyecto: `cd appPagos`
 3. Instala las dependencias: `npm install`
-4. Inicia la aplicación: `npm start`
+4. Inicia la aplicación: `npm run dev`
 
 ## Uso
 

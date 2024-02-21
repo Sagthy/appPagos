@@ -22,20 +22,41 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  
 }
 
 .mes {
-  flex: 0 0 30%;
   background-color: #1b1b1b;
   margin: 1%;
   padding: 20px;
-  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
   box-sizing: border-box;
+  width: calc(100% - 2%);
+  transition: transform 0.3s ease; 
+}
+
+@media (min-width: 600px) {
+  .mes:hover {
+    transform: scale(1.01);
+  }
+}
+
+@media (min-width: 600px) {
+  .mes {
+    width: calc(50% - 2%);
+  }
+}
+
+@media (min-width: 900px) {
+  .mes {
+    width: calc(33.33% - 2%);
+  }
 }
 
 .mes h2 {
   margin-top: 0;
   color: #FAFAFA;
+  text-align: center;
 }
 
 .mes ul {
@@ -68,16 +89,6 @@ li span {
   margin-left: 10px;
 }
 
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #FAFAFA;
-}
-
-button:focus {
-  outline: 2px solid #FAFAFA;
-}
 
 .buttonContainer {
   display: flex;
@@ -85,13 +96,11 @@ button:focus {
   gap: 10px;
 }
 
-
 .myButton {
   font-weight: bold;
   margin: 10px;
   padding: 10px;
   background-color: #2d2d2d;
-  border: none;
   color: white;
   text-align: center;
   display: inline-block;
@@ -99,8 +108,14 @@ button:focus {
   cursor: pointer;
   border-radius: 25px;
   width: 100px;
-  /* Borde blanco */
-  border: 2px solid white;
+  transition: 0.3s;
+  border: 1px solid #000;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.myButton:active {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  transform: translateY(3px);
 }
 
 .myButton:hover {
@@ -120,6 +135,13 @@ button:focus {
   cursor: pointer;
   transition: 0.3s;
   border-radius: 12px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+.myButton-reset:active {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  transform: translateY(3px);
 }
 
 .myButton-reset:hover {
@@ -147,6 +169,6 @@ button {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }

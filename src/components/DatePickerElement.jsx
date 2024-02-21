@@ -1,4 +1,5 @@
 import DatePicker from 'react-datepicker'
+import '../styles/DatePicker.css'
 
 export function DatePickerElement ({ startDate, handleDateChange, openDatePicker, setOpenDatePicker, wrapperRef }) {
   return (

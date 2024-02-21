@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Mes } from './components/Mes'
+import './styles/App.css'
 
 const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 

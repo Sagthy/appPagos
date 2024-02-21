@@ -1,79 +1,38 @@
-import { useState, useEffect, useRef } from 'react';
-import { calculateDateDifference } from '../utils/dateUtils';
-import Switch from 'react-switch';
-import DatePicker from 'react-datepicker';
+import { usePago } from '../logic/usePago';
+import { SwitchElement } from './SwitchElement';
+import { DatePickerElement } from './DatePickerElement';
+import { StartDateElement } from './StartDateElement';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import '../styles/Pago.css';
 
-export function Pago ({ pago, mes }) {
-    const [checked, setChecked] = useState(localStorage.getItem(`checked-${mes}-${pago.nombre}`) === 'true');
-    const [startDate, setStartDate] = useState(localStorage.getItem(`startDate-${mes}-${pago.nombre}`) ? new Date(localStorage.getItem(`startDate-${mes}-${pago.nombre}`)) : null);
-    const [openDatePicker, setOpenDatePicker] = useState(false);
-    const wrapperRef = useRef(null);
+export function Pago({ pago, mes }) {
+    const { checked, startDate, openDatePicker, wrapperRef, handleChange, handleDateChange, dateDifference, isPastDue, setOpenDatePicker } = usePago(pago, mes);
 
-    const handleChange = (checked) => {
-        setChecked(checked);
-        localStorage.setItem(`checked-${mes}-${pago.nombre}`, checked);
-        if (checked) {
-            setStartDate(null);
-        }
-    };
-
-    const handleDateChange = (date) => {
-        setStartDate(date);
-        localStorage.setItem(`startDate-${mes}-${pago.nombre}`, date.toISOString());
-        setOpenDatePicker(false);
-    };
-
-    const dateDifference = calculateDateDifference(startDate);
-
-    let itemStyle = {};
+    let itemStyle = '';
     if (checked) {
-        itemStyle.backgroundColor = 'green';
+        itemStyle = 'item-green';
     } else if (!startDate || dateDifference > 3) {
-        itemStyle.backgroundColor = 'gray';
+        itemStyle = 'item-gray';
     } else if (dateDifference <= 0) {
-        itemStyle.backgroundColor = 'red';
+        itemStyle = 'item-red';
     } else if (dateDifference <= 3) {
-        itemStyle.backgroundColor = 'orange';
+        itemStyle = 'item-orange';
     }
 
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-                setOpenDatePicker(false);
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [wrapperRef]);
-
     return (
-        <li style={itemStyle}>
+        <li className={itemStyle}>
             <span>
                 {pago.nombre}
-                <div className="switch-wrapper">
-                    <Switch onChange={handleChange} checked={checked} />
-                </div>
+                {!isPastDue && <SwitchElement checked={checked} handleChange={handleChange} />}
                 <div style={{ position: 'relative' }}>
-                    <button onClick={() => setOpenDatePicker(!openDatePicker)}>🖉</button>
-                    {openDatePicker && (
-                        <div ref={wrapperRef} style={{ position: 'absolute' }}>
-                            <DatePicker
-                                selected={startDate}
-                                onChange={handleDateChange}
-                                open={openDatePicker}
-                                onCalendarClose={() => setOpenDatePicker(false)}
-                                onCalendarOpen={() => setOpenDatePicker(true)}
-                                customInput={<div />}
-                            />
-                        </div>
-                    )}
+                    <button onClick={() => setOpenDatePicker(!openDatePicker)}>
+                        <FontAwesomeIcon icon={faPencilAlt} />
+                    </button>
+                    {openDatePicker && <DatePickerElement startDate={startDate} handleDateChange={handleDateChange} openDatePicker={openDatePicker} setOpenDatePicker={setOpenDatePicker} wrapperRef={wrapperRef} />}
                 </div>
-
             </span>
-            {!checked && startDate && <span>{startDate.toLocaleDateString()}</span>}
+            <StartDateElement checked={checked} startDate={startDate} />
         </li>
     );
 }

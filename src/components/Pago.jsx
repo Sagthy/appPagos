@@ -14,7 +14,7 @@ export function Pago ({ pago, mes }) {
     itemStyle = 'item-green'
   } else if (!startDate || dateDifference > 3) {
     itemStyle = 'item-gray'
-  } else if (dateDifference <= 0) {
+  } else if (dateDifference < 0) {
     itemStyle = 'item-red'
   } else if (dateDifference <= 3) {
     itemStyle = 'item-orange'

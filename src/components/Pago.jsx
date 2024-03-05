@@ -24,7 +24,7 @@ export function Pago ({ pago, mes }) {
     <li className={itemStyle}>
       <span>
         {pago.nombre}
-        {!isPastDue && <SwitchElement checked={checked} handleChange={handleChange} />}
+        <SwitchElement checked={checked} handleChange={handleChange} />
         <div style={{ position: 'relative' }}>
           <button onClick={() => setOpenDatePicker(!openDatePicker)} aria-label='Open Date Picker'>
             <FontAwesomeIcon icon={faPencilAlt} />

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-redeclare
 /* global localStorage */
 import { useState } from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -13,10 +14,16 @@ const pagosConst = [
     meses: ['Enero']
   },
   {
-    nombre: 'Contribución',
+    nombre: 'Contribución Salto',
     mensual: false,
     meses: ['Febrero']
   },
+  {
+    nombre: 'Contribución Mdeo',
+    mensual: false,
+    meses: ['Marzo', 'Julio', 'Noviembre']
+  },
+
   {
     nombre: 'Seguro',
     mensual: false,

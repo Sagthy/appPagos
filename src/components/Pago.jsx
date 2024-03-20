@@ -7,7 +7,7 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import '../styles/Pago.css'
 
 export function Pago ({ pago, mes }) {
-  const { checked, startDate, openDatePicker, wrapperRef, handleChange, handleDateChange, dateDifference, isPastDue, setOpenDatePicker } = usePago(pago, mes)
+  const { checked, startDate, openDatePicker, wrapperRef, handleChange, handleDateChange, dateDifference, setOpenDatePicker } = usePago(pago, mes)
 
   let itemStyle = ''
   if (checked) {

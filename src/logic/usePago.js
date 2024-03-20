@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 /* global localStorage */
 import { useState, useEffect, useRef } from 'react'
 import { calculateDateDifference } from '../utils/dateUtils'
@@ -41,5 +42,5 @@ export function usePago (pago, mes) {
   const currentDate = new Date()
   const isPastDue = startDate && currentDate > startDate
 
-  return { checked, startDate, openDatePicker, wrapperRef, handleChange, handleDateChange, dateDifference, isPastDue, setOpenDatePicker }
+  return { checked, startDate, openDatePicker, wrapperRef, handleChange, handleDateChange, dateDifference, setOpenDatePicker }
 }

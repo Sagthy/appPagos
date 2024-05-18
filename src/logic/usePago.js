@@ -12,6 +12,7 @@ export function usePago (pago, mes) {
   const handleChangePaymentDate = (date) => {
     setPaymentDate(date)
     localStorage.setItem(`paymentDate-${mes}-${pago.nombre}`, date.toISOString())
+    setOpenDatePicker(false)
   }
 
 

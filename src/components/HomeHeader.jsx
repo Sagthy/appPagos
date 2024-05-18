@@ -10,8 +10,8 @@ const HomeHeader = () => {
 
 
     return (
-        <Flex flexDirection="column" alignItems="center">
-            <Heading color="white" padding="1rem" size="2xl">
+        <Flex flexDirection="column" alignItems="center" justifyContent="center">
+            <Heading color="white" padding="1rem" size="2xl" textAlign="center">
                 PAGOS PENDIENTES
             </Heading>
             <Text fontSize="2.3rem" marginBottom="1rem"> 💸💸💸💸 </Text>

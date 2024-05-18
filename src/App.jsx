@@ -4,10 +4,10 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { Mes } from "./components/Mes";
 
-import payments from "./constants/payments.constants";
-
 import "./styles/App.css";
 import "react-datepicker/dist/react-datepicker.css";
+import HomeHeader from "./components/HomeHeader";
+import { useItems } from "./states/ItemsContext";
 
 const meses = [
   "Enero",
@@ -48,14 +48,11 @@ const App = () => {
     window.location.reload();
   };
 
+  const { items } = useItems();
+
   return (
     <main>
-      <h1>
-        PAGOS PENDIENTES
-        <br />
-        💸💸💸💸
-        <br />
-      </h1>
+      <HomeHeader />
       <div className="buttonContainer">
         <button className="myButton" onClick={handlePreviousClick}>
           Anterior
@@ -66,7 +63,7 @@ const App = () => {
       </div>
       <section className="mesesYPagos">
         {showedMonths.map((mes) => (
-          <Mes key={mes} mes={mes} pagos={payments} />
+          <Mes key={mes} mes={mes} pagos={items} />
         ))}
       </section>
       <div className="buttonContainer">

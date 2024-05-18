@@ -2,7 +2,8 @@
 
 import { Pago } from './Pago'
 
-export function Mes ({ mes, pagos }) {
+export function Mes({ mes, pagos }) {
+
   return (
     <div className='mes'>
       <h2>{mes}</h2>

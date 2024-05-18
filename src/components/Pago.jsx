@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { usePago } from '../logic/usePago'
 import { SwitchElement } from './SwitchElement'
 import { DatePickerElement } from './DatePickerElement'
@@ -5,6 +6,10 @@ import { StartDateElement } from './StartDateElement'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import '../styles/Pago.css'
+
+import PaymentModal from './modals/PaymentModal'
+
+import { useDisclosure } from '@chakra-ui/react'
 
 export function Pago ({ pago, mes }) {
   const { checked, startDate, openDatePicker, wrapperRef, handleChange, handleDateChange, dateDifference, setOpenDatePicker } = usePago(pago, mes)
@@ -20,9 +25,12 @@ export function Pago ({ pago, mes }) {
     itemStyle = 'item-orange'
   }
 
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+
   return (
-    <li className={itemStyle}>
-      <span>
+    <li className={itemStyle}  onClick={onOpen}>
+      <span >
         {pago.nombre}
         <SwitchElement checked={checked} handleChange={handleChange} />
         <div style={{ position: 'relative' }}>
@@ -33,6 +41,7 @@ export function Pago ({ pago, mes }) {
         </div>
       </span>
       <StartDateElement checked={checked} startDate={startDate} />
+      <PaymentModal isOpen={isOpen} onClose={onClose} paymentInfo={pago} />
     </li>
   )
 }

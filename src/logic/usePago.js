@@ -18,10 +18,6 @@ export function usePago (pago, mes) {
   const handleChange = (checked) => {
     setChecked(checked)
     localStorage.setItem(`checked-${mes}-${pago.nombre}`, checked)
-    if (checked) {
-      setStartDate(null)
-      localStorage.removeItem(`startDate-${mes}-${pago.nombre}`) 
-    }
   }
 
   const handleDateChange = (date) => {

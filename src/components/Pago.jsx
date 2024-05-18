@@ -12,7 +12,7 @@ import PaymentModal from './modals/PaymentModal'
 import { useDisclosure } from '@chakra-ui/react'
 
 export function Pago ({ pago, mes }) {
-  const { checked, startDate, openDatePicker, wrapperRef, handleChange, handleDateChange, dateDifference, setOpenDatePicker } = usePago(pago, mes)
+  const { checked, startDate, openDatePicker, handleChange, handleDateChange, dateDifference, setOpenDatePicker } = usePago(pago, mes)
 
   let itemStyle = ''
   if (checked) {
@@ -33,18 +33,18 @@ export function Pago ({ pago, mes }) {
       <span >
         {pago.nombre}
         <SwitchElement checked={checked} handleChange={handleChange} />
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative', padding: '0.2rem 0.4rem' }}>
           <button onClick={(e) => {
             e.stopPropagation()
             setOpenDatePicker(!openDatePicker)
             }} aria-label='Open Date Picker'>
             <FontAwesomeIcon icon={faPencilAlt} />
           </button>
-          {openDatePicker && <DatePickerElement startDate={startDate} handleDateChange={handleDateChange} openDatePicker={openDatePicker} setOpenDatePicker={setOpenDatePicker} wrapperRef={wrapperRef} />}
+          {openDatePicker && <DatePickerElement startDate={startDate} handleDateChange={handleDateChange} openDatePicker={openDatePicker} setOpenDatePicker={setOpenDatePicker}/>}
         </div>
       </span>
       <StartDateElement checked={checked} startDate={startDate} />
-      <PaymentModal isOpen={isOpen} onClose={onClose} paymentInfo={pago} />
+      <PaymentModal isOpen={isOpen} onClose={onClose} paymentInfo={pago} fechaVencimiento={startDate} mes={mes} />
     </li>
   )
 }

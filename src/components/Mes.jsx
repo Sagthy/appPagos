@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import { Pago } from './Pago'
 
 export function Mes ({ mes, pagos }) {

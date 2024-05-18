@@ -24,7 +24,7 @@ const PaymentModal = ({ isOpen, onClose, paymentInfo }) => {
           <Button colorScheme="blue" mr={3} onClick={onClose}>
             Guardar
           </Button>
-          <Button variant="ghost">Cerrar</Button>
+          <Button variant="ghost" onClick={onClose}>Cerrar</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

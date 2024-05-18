@@ -137,19 +137,6 @@
   }
   
   
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #FAFAFA;
-    display: flex;
-    /* Añade esta línea */
-    align-items: center;
-    /* Añade esta línea */
-    justify-content: center;
-    /* Añade esta línea */
-  }
-  
   .visually-hidden {
     position: absolute;
     width: 1px;

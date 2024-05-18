@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import Switch from 'react-switch'
 
 export function SwitchElement ({ checked, handleChange }) {

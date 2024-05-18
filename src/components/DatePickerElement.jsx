@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import DatePicker from 'react-datepicker'
 import '../styles/DatePicker.css'
 

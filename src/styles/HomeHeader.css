@@ -1,0 +1,17 @@
+.botoncito {
+    font-weight: bold;
+    margin: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #2d2d2d;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 70px;
+    transition: 0.3s;
+    border: 1px solid #000;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}

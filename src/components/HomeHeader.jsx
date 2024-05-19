@@ -1,6 +1,7 @@
 import { Flex, Heading, Text, IconButton, useDisclosure } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
 import AddNewItemModal from './modals/AddNewItemModal'
+import '../styles/HomeHeader.css'
 
 const HomeHeader = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -11,7 +12,7 @@ const HomeHeader = () => {
         PAGOS PENDIENTES
       </Heading>
       <Text fontSize='2.3rem' marginBottom='1rem'> 💸💸💸💸 </Text>
-      <IconButton aria-label='Add Items' color='white' colorScheme='red' rounded='full' fontWeight='bold' icon={<AddIcon boxSize='1.2rem' />} onClick={onOpen} />
+      <IconButton aria-label='Add Items' color='white' colorScheme='red' rounded='full' fontWeight='bold' icon={<AddIcon boxSize='1.2rem' />} className='botoncito' onClick={onOpen} />
       <AddNewItemModal isOpen={isOpen} onClose={onClose} />
     </Flex>
 

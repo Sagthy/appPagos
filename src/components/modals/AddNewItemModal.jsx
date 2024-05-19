@@ -71,50 +71,50 @@ const NewItemModal = ({ isOpen, onClose }) => {
         <ModalCloseButton />
         <ModalBody>
           <FormControl isInvalid={!!error && !nombre.trim()}>
-              <FormLabel>Nombre</FormLabel>
-              <Input
-                onChange={(e) => {
-                    setName(e.target.value)
-                    if (error) setError('')
-                  }}
-                type='text'
-                value={nombre}
-              />
-            </FormControl>
+            <FormLabel>Nombre</FormLabel>
+            <Input
+              onChange={(e) => {
+                setName(e.target.value)
+                if (error) setError('')
+              }}
+              type='text'
+              value={nombre}
+            />
+          </FormControl>
 
           <Menu closeOnSelect={false} overflow='scroll'>
-              <MenuButton as={Button} colorScheme='blue'>
-                Selecciona los meses
-                        </MenuButton>
-              <MenuList overflowY='scroll' height='40vh'>
-                <MenuItem>
-                    <Checkbox
-                        size='lg'
-                        onChange={handleMonthChange}
-                        value='mensual'
-                        isChecked={meses.includes('mensual')}
-                      >
-                        Mensual
-                                </Checkbox>
-                  </MenuItem>
-                {['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'].map((month) => (
-                    <MenuItem key={month}>
-                        <Checkbox
-                            size='lg'
-                            onChange={handleMonthChange}
-                            value={month}
-                            isChecked={meses.includes(month)}
-                            isDisabled={isMonthlySelected}
-                          >
-                            {month}
-                          </Checkbox>
-                      </MenuItem>
-                  ))}
-              </MenuList>
-            </Menu>
+            <MenuButton as={Button} colorScheme='blue'>
+              Selecciona los meses
+            </MenuButton>
+            <MenuList overflowY='scroll' height='40vh'>
+              <MenuItem>
+                <Checkbox
+                  size='lg'
+                  onChange={handleMonthChange}
+                  value='mensual'
+                  isChecked={meses.includes('mensual')}
+                >
+                  Mensual
+                </Checkbox>
+              </MenuItem>
+              {['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'].map((month) => (
+                <MenuItem key={month}>
+                  <Checkbox
+                    size='lg'
+                    onChange={handleMonthChange}
+                    value={month}
+                    isChecked={meses.includes(month)}
+                    isDisabled={isMonthlySelected}
+                  >
+                    {month}
+                  </Checkbox>
+                </MenuItem>
+              ))}
+            </MenuList>
+          </Menu>
           {(!nombre.trim() || !meses.length) && error && (
-              <Text color='red.500' mt={2}>{error}</Text>
-            )}
+            <Text color='red.500' mt={2}>{error}</Text>
+          )}
         </ModalBody>
         <ModalFooter>
           <Button colorScheme='blue' onClick={handleSave}>Guardar</Button>

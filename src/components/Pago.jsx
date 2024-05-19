@@ -26,8 +26,14 @@ export function Pago({ pago, mes }) {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const handleItemClick = (e) => {
+    e.preventDefault(); 
+    e.stopPropagation(); 
+    onOpen(); 
+  };
+
   return (
-    <li className={itemStyle} onClick={onOpen}>
+    <li className={itemStyle} onClick={handleItemClick}>
       <span>
         {pago.nombre}
         <SwitchElement checked={checked} handleChange={handleChange} />

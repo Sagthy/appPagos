@@ -15,7 +15,6 @@ export function usePago (pago, mes) {
     setOpenDatePicker(false)
   }
 
-
   const handleChange = (checked) => {
     setChecked(checked)
     localStorage.setItem(`checked-${mes}-${pago.nombre}`, checked)
@@ -29,6 +28,5 @@ export function usePago (pago, mes) {
 
   const dateDifference = calculateDateDifference(startDate)
 
-
-  return { checked, startDate, openDatePicker, handleChange, handleDateChange, dateDifference, setOpenDatePicker, paymentDate, handleChangePaymentDate}
+  return { checked, startDate, openDatePicker, handleChange, handleDateChange, dateDifference, setOpenDatePicker, paymentDate, handleChangePaymentDate }
 }

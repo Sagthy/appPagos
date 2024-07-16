@@ -20,6 +20,8 @@ export function usePago (pago, mes) {
     localStorage.setItem(`checked-${mes}-${pago.nombre}`, checked)
   }
 
+  console.log(`Initial payment date: ${paymentDate}`)
+
   const handleDateChange = (date) => {
     setStartDate(date)
     localStorage.setItem(`startDate-${mes}-${pago.nombre}`, date.toISOString())

@@ -32,7 +32,7 @@ const PaymentModal = ({ isOpen, onClose, paymentInfo, fechaVencimiento, mes }) =
           <p>Fecha de vencimiento: {fechaVencimiento ? fechaVencimiento.toLocaleDateString() : 'No ingresada'}</p>
           <Flex gap='0.3rem'>
 
-            <p>Fecha de pago:</p>
+            <p>Fecha de pago: {paymentDate ? paymentDate.toLocaleDateString() : 'No ingresada'}</p>
             <div style={{ position: 'relative' }}>
               <button
                 onClick={(e) => {

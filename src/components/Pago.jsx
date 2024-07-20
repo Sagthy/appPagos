@@ -64,7 +64,7 @@ export function Pago ({ pago, mes }) {
         </div>
       </span>
       <StartDateElement checked={checked} startDate={startDate} />
-      <PaymentModal isOpen={isOpen} onClose={onClose} paymentInfo={pago} fechaVencimiento={startDate} mes={mes} />
+      <PaymentModal isOpen={isOpen} onClose={onClose} paymentInfo={pago} fechaVencimiento={startDate} mes={mes} checked={checked} />
     </li>
   )
 }
